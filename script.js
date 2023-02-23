@@ -7,13 +7,25 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function render() {
+  const libraryElement = document.querySelector('#library-cards');
+  libraryElement.innerHTML = '';
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    const bookElement = document.createElement('div');
+    bookElement.innerHTML = `<p>${book.title}</p>`;
+    libraryElement.appendChild(bookElement);
+  }
+}
+
 function addBookToLibrary() {
-  let title = document.querySelector('#title').value;
-  let author = document.getElementById('author').value;
-  let pages = document.getElementById('pages').value;
-  let read = document.getElementById('read').checked;
-  let newBook = new Book(title, author, pages, read);
-  console.log(newBook);
+  const title = document.querySelector('#title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').checked;
+  const newBook = new Book(title, author, pages, read);
+  library.push(newBook);
+  render();
 }
 
 let newBookBtn = document.querySelector('#new-book-btn');
@@ -22,7 +34,7 @@ newBookBtn.addEventListener('click', function() {
   newBookForm.style.display = 'block';
 });
 
-document.querySelector('#new-book-form').addEventListener('submit', function() {
+document.querySelector('#new-book-form').addEventListener('submit', function(event) {
   event.preventDefault;
   addBookToLibrary();
   alert('submit');
