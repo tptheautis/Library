@@ -8,12 +8,17 @@ function Book(title, author, pages, read) {
 }
 
 function render() {
-  const libraryElement = document.querySelector('#library-cards');
+  const libraryElement = document.getElementById('libraryCards');
   libraryElement.innerHTML = '';
   for (let i = 0; i < library.length; i++) {
     const book = library[i];
     const bookElement = document.createElement('div');
-    bookElement.innerHTML = `<p>${book.title}</p>`;
+    bookElement.innerHTML = `
+      <div class="card-header">
+        <h3 class="title">${book.title}</h3>
+        <h5 class="author">by ${book.author}</h5>
+      
+    `;
     libraryElement.appendChild(bookElement);
   }
 }
@@ -35,7 +40,6 @@ newBookBtn.addEventListener('click', function() {
 });
 
 document.querySelector('#new-book-form').addEventListener('submit', function(event) {
-  event.preventDefault;
+  event.preventDefault();
   addBookToLibrary();
-  alert('submit');
 })
