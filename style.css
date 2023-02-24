@@ -18,3 +18,23 @@ body {
     height: 100vh;
     width: 100vh;
 }
+
+#new-book-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card {
+    display: flex;
+    font-size: 20px;
+    padding: 5px;
+    gap: 5px;
+    border: 1px solid white;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    background-color: grey;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}

@@ -13,14 +13,26 @@ function render() {
   for (let i = 0; i < library.length; i++) {
     const book = library[i];
     const bookElement = document.createElement('div');
+    bookElement.setAttribute('class', 'book-card');
     bookElement.innerHTML = `
       <div class="card-header">
         <h3 class="title">${book.title}</h3>
         <h5 class="author">by ${book.author}</h5>
-      
+      </div>
+      <div class="card-body">
+        <p>${book.pages} pages</p> 
+        <p class+"read-status">${book.read ? "Read" : "Not Read Yet"}</p>
+        <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
+        <button class="toggle-read-btn" onclick="toggleRead(${i})>Toggle</button>
+      </div>
     `;
     libraryElement.appendChild(bookElement);
   }
+}
+
+function removeBook(index) {
+  library.splice(index, 1);
+  render();
 }
 
 function addBookToLibrary() {
